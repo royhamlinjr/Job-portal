@@ -6,6 +6,7 @@ class Job(models.Model):
     description = models.TextField()
     company = models.CharField(max_length=100)
     location = models.CharField(max_length=100)
+    salary_range = models.CharField(max_length=50,blank=True)
     posted_on = models.DateField(auto_now_add=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
