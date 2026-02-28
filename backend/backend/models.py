@@ -8,3 +8,15 @@ class Job(models.Model):
     location = models.CharField(max_length=100)
     posted_on = models.DateField(auto_now_add=True)
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+
+class Application(models.Model):
+    STATUS_CHOICES = (
+        ('pending','Pending'),
+        ('shortlisted','Shortlisted'),
+        ('rejected','Rejected'),
+        ('hired','Hired'),
+    )
+    job = models.ForeignKey(Job,on_delete=models.CASCADE)
+    applicant = models.ForeignKey(User,on_delete=models.CASCADE)
+    status = models.CharField(max_length=20,choices=STATUS_CHOICES,default='pending')
+    applied_on = models.DateTimeField(auto_now_add=True)
