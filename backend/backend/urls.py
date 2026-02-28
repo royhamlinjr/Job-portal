@@ -21,5 +21,5 @@ from .views import hello_api, register_user
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/',hello_api),
-    path('register/',register_user),
+    path('register',register_user),
 ]
