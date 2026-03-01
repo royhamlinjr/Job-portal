@@ -1,6 +1,21 @@
 import React from 'react'
 
+async function registerAction(_, formData) {
+    const json = Object.fromEntries(formData);
+    const res =await fetch('http://localhost:5173/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(json),
+    });
+
+    const data = await res.json();
+    return data.message || 'Registration Failed';
+}
+
 export default function RegisterPage() {
+
   return (
 
 <div className="bg-gray-50 text-gray-800">
