@@ -92,8 +92,8 @@ export default function RegisterPage() {
                         className="mt-1 w-full rounded border border-gray-300 px-3 py-2 focus:border-blue-600 focus:ring-1 focus:ring-blue-200 outline-none" />
                 </div>
 
-                <button className="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2.5 rounded transition">
-                    Register Now
+                <button disabled={isPending} type='submit' className="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2.5 rounded transition">
+                    {isPending ? 'Registering...' : 'Register Now'}
                 </button>
 
                 <p className="text-xs text-gray-500 text-center">
