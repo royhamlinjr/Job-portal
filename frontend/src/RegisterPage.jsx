@@ -72,7 +72,7 @@ export default function RegisterPage() {
                     <label className="text-sm font-medium text-gray-700">
                         Username
                     </label>
-                    <input placeholder="Enter username"
+                    <input name="username" placeholder="Enter username"
                         className="mt-1 w-full rounded border border-gray-300 px-3 py-2 focus:border-blue-600 focus:ring-1 focus:ring-blue-200 outline-none" />
                 </div>
 
@@ -80,7 +80,7 @@ export default function RegisterPage() {
                     <label className="text-sm font-medium text-gray-700">
                         Email ID
                     </label>
-                    <input type="email" placeholder="Enter email"
+                    <input name="email" type="email" placeholder="Enter email"
                         className="mt-1 w-full rounded border border-gray-300 px-3 py-2 focus:border-blue-600 focus:ring-1 focus:ring-blue-200 outline-none" />
                 </div>
 
@@ -88,7 +88,7 @@ export default function RegisterPage() {
                     <label className="text-sm font-medium text-gray-700">
                         Password
                     </label>
-                    <input type="password" placeholder="Minimum 6 characters"
+                    <input name="password" type="password" placeholder="Minimum 6 characters"
                         className="mt-1 w-full rounded border border-gray-300 px-3 py-2 focus:border-blue-600 focus:ring-1 focus:ring-blue-200 outline-none" />
                 </div>
 
