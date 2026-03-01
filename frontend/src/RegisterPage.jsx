@@ -96,6 +96,8 @@ export default function RegisterPage() {
                     {isPending ? 'Registering...' : 'Register Now'}
                 </button>
 
+                <p className="text-center text-sm text-gray-700">{message}</p>
+
                 <p className="text-xs text-gray-500 text-center">
                     By registering, you agree to our
                     <a href="#" className="text-blue-700 hover:underline">Terms & Conditions</a>
