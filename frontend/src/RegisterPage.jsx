@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useActionState } from 'react'
 
 async function registerAction(_, formData) {
     const json = Object.fromEntries(formData);
@@ -15,6 +15,9 @@ async function registerAction(_, formData) {
 }
 
 export default function RegisterPage() {
+
+  const [message, formAction, isPending] = useActionState(registerAction, "",
+     { withpending: true }); 
 
   return (
 
