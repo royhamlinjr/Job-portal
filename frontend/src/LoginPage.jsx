@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useActionState } from 'react'
 
 async function LoginAction(_, formData) {
     const json = Object.fromEntries(formData);
@@ -14,6 +14,10 @@ async function LoginAction(_, formData) {
     return data.message || 'Login Failed'
 }
 export default function LoginPage() {
+
+  const [message, formAction, isPending] = useActionState(LoginAction, "",
+    { withpending: true }); 
+    
   return (
     <div className="bg-gray-50 text-gray-800">
 
@@ -58,7 +62,7 @@ export default function LoginPage() {
     Login to your account
 </p>
 
-<form className="mt-6 space-y-4">
+<form action={formAction} className="mt-6 space-y-4">
 
     <div>
         <label className="block text-sm font-medium text-gray-700">
@@ -84,10 +88,12 @@ export default function LoginPage() {
         </a>
     </div>
 
-    <button className="w-full bg-blue-700 hover:bg-blue-800
+    <button disabled={isPending} type='submit' className="w-full bg-blue-700 hover:bg-blue-800
                 text-white font-semibold py-2.5 rounded transition">
-        Login
+        {isPending ? 'Logging in...' : 'Login'}
     </button>
+
+     <p className="text-center text-sm text-gray-700">{message}</p>
 
     <p className="text-sm text-center text-gray-600">
         New to JobPortal?
