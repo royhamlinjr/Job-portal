@@ -1,5 +1,18 @@
 import React from 'react'
 
+async function LoginAction(_, formData) {
+    const json = Object.fromEntries(formData);
+    const res = await fetch('http://127.0.0.1:8000/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(json),
+    });
+
+    const data = await res.json();
+    return data.message || 'Login Failed'
+}
 export default function LoginPage() {
   return (
     <div className="bg-gray-50 text-gray-800">
