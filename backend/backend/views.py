@@ -3,7 +3,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.models import User
 
-from .serializers import RegisterSerializer
+from .models import Job
+
+from .serializers import JobsSerializer, RegisterSerializer
 
 @api_view(['GET'])
 def hello_api(request):
@@ -27,3 +29,9 @@ def basic_login(request):
         return Response({"message":"Login successful"}, status=status.HTTP_200_OK)
     except User.DoesNotExist:
         return Response({"message":"Invalid Credentials"}, status=status.HTTP_400_BAD_REQUEST)
+    
+@api_view(['GET'])
+def job_list(request):
+    jobs = Job.objects.all()
+    serializer = JobsSerializer(jobs, many=True)
+    return Response(serializer.data)
