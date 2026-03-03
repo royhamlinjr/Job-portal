@@ -1,5 +1,5 @@
 import React, { useActionState } from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 async function LoginAction(_, formData) {
     const json = Object.fromEntries(formData);
@@ -24,6 +24,12 @@ export default function LoginPage() {
 
   const [message, formAction, isPending] = useActionState(LoginAction, "",
     { withpending: true }); 
+
+  const navigate = useNavigate();
+
+  if (message == 'Login successful') {
+    navigate('/jobs');
+  }
     
   return (
     <div className="bg-gray-50 text-gray-800">
