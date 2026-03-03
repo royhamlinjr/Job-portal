@@ -1,4 +1,5 @@
 import React, { useActionState } from 'react'
+import { NavLink } from 'react-router-dom';
 
 async function applyJobAction(_, formData) {
     const res = await fetch('http://127.0.0.1:8000/apply', {
@@ -49,14 +50,14 @@ export default function ApplyJobPage() {
   <main className="min-h-[calc(100vh-140px)] px-4">
 
     <div className="max-w-7xl mx-auto pt-6">
-      <a
-        href="/jobs"
+      <NavLink
+        to="/jobs"
         className="inline-flex items-center gap-2 mb-4
                text-sm font-medium text-blue-600
                hover:text-blue-700 hover:underline"
       >
         ← Back to Jobs
-      </a>
+      </NavLink>
     </div>
 
     <div className="flex items-center justify-center py-10">
