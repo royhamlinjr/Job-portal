@@ -12,6 +12,12 @@ async function LoginAction(_, formData) {
     });
 
     const data = await res.json();
+
+    if (res.ok) {
+        localStorage.setItem('userId', data.user_id);
+        localStorage.setItem('username', data.username);
+    }
+
     return data.message || 'Login Failed'
 }
 export default function LoginPage() {
