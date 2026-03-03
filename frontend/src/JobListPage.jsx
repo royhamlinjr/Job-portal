@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom';
 
 export default function JobListPage() {
 
@@ -53,7 +54,7 @@ export default function JobListPage() {
             <span className="rounded bg-gray-100 px-2 py-1">🕒 Full Time</span>
           </div>
           <div className="mt-4 flex justify-end">
-            <button className="text-sm font-medium text-blue-700 hover:underline">View Details →</button>
+            <NavLink to={`/apply/${job.id}`} className="text-sm font-medium text-blue-700 hover:underline">View Details →</NavLink>
           </div>
         </div>
         ))}
