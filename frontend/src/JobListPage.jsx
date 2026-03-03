@@ -46,6 +46,7 @@ export default function JobListPage() {
         <div className="rounded-lg border bg-white p-5 transition hover:shadow-md">
           <h3 className="text-lg font-semibold text-blue-700">{job.title}</h3>
           <p className="mt-1 text-sm text-gray-700">{job.company}</p>
+          <p className='text-gray-700 text-xs'>{new Date(job.posted_on).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</p>
           <div className="mt-3 flex flex-wrap gap-3 text-sm text-gray-600">
             <span className="rounded bg-gray-100 px-2 py-1">📍 {job.location}</span>
             <span className="rounded bg-gray-100 px-2 py-1">💰 {job.salary_range}</span>
