@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import basic_login, hello_api, job_list, register_user
+from .views import apply_job, basic_login, hello_api, job_list, register_user
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,4 +24,5 @@ urlpatterns = [
     path('register',register_user),
     path('login',basic_login),
     path('jobs',job_list),
+    path('apply',apply_job)
 ]
