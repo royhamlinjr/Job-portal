@@ -1,6 +1,29 @@
-import React from 'react'
+import React, { useActionState } from 'react'
+
+async function applyJobAction(_, formData) {
+    const res = await fetch('http://127.0.0.1:8000/apply', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          job: 4,
+          applicant: 2
+        })
+    });
+    
+    const data = await res.json();
+    if (res.ok) {
+      return {message: data.message, success: true}
+    } 
+    return {message: data.message, success: false}  
+}
 
 export default function ApplyJobPage() {
+
+    const [result, formAction, isPending] = useActionState(applyJobAction, null,
+      { withpending: true }); 
+
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 flex flex-col">
 
@@ -15,7 +38,7 @@ export default function ApplyJobPage() {
       </nav>
 
       <div className="flex items-center gap-4">
-        <span className="text-sm text-gray-600">Hello, Logesh</span>
+        <span className="text-sm text-gray-600">Hello, Roy</span>
         <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-700 text-sm font-semibold text-white">
           L
         </div>
@@ -46,7 +69,7 @@ export default function ApplyJobPage() {
           Your profile will be shared with the recruiter
         </p>
 
-        <form className="mt-5 space-y-4">
+        <form action={formAction} className="mt-5 space-y-4">
 
           <button
             type="submit"
@@ -55,16 +78,12 @@ export default function ApplyJobPage() {
                    hover:bg-blue-800
                    focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
-            Apply Now
+           {isPending ? "Applying..." : "Apply Now"}
           </button>
 
-          <p className="text-center text-sm text-green-600">
-            Application submitted successfully
-          </p>
-
-          <p className="text-center text-sm text-red-600">
-            You have already applied for this job
-          </p>
+          { result && <p className={`text-center text-sm  ${result.success ? 'text-green-600' : 'text-red-600'}`}>
+            {result.message}
+          </p> }
 
         </form>
       </div>
