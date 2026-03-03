@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 export default function JobListPage() {
+
+  const [jobs, setJobs] = useState([]);
+
+  useEffect(() => {
+    fetch('http://127.0.0.1:8000/jobs')
+      .then(res => res.json())
+      .then(setJobs)
+      .catch(err => console.error('Error fetching jobs:', err));
+  },[])
+    
   return (
     <div className="min-h-screen flex flex-col">
   <header className="border-b bg-white">
