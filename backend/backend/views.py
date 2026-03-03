@@ -3,9 +3,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from django.contrib.auth.models import User
 
-from .models import Job
+from .models import Application, Job
 
-from .serializers import JobsSerializer, RegisterSerializer
+from .serializers import ApplicationSerializer, JobsSerializer, RegisterSerializer
 
 @api_view(['GET'])
 def hello_api(request):
@@ -35,3 +35,11 @@ def job_list(request):
     jobs = Job.objects.all()
     serializer = JobsSerializer(jobs, many=True)
     return Response(serializer.data)
+
+@api_view(['POST'])
+def apply_job(request):
+    serializer = ApplicationSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response({"message":"Application submitted successfully!"}, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
