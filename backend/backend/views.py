@@ -39,6 +39,11 @@ def job_list(request):
 @api_view(['POST'])
 def apply_job(request):
     serializer = ApplicationSerializer(data=request.data)
+    job_id = request.data.get('job')
+    applicant_id = request.data.get('applicant')
+    # Check Application Exists
+    if Application.objects.filter(job_id=job_id, applicant_id=applicant_id).exists():
+        return Response({"message":"Application already exists for this job and applicant"}, status=status.HTTP_400_BAD_REQUEST)
     if serializer.is_valid():
         serializer.save()
         return Response({"message":"Application submitted successfully!"}, status=status.HTTP_201_CREATED)
