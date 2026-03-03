@@ -39,19 +39,23 @@ export default function JobListPage() {
       </div>
 
       <div className="space-y-4">
+        {/* Job Card */}
+        {jobs.length == 0 ? (
+          <p className="text-center text-gray-500">No jobs found.</p>
+        ) : jobs.map(job => (
         <div className="rounded-lg border bg-white p-5 transition hover:shadow-md">
-          <h3 className="text-lg font-semibold text-blue-700">Frontend Developer</h3>
-          <p className="mt-1 text-sm text-gray-700">Infosys</p>
+          <h3 className="text-lg font-semibold text-blue-700">{job.title}</h3>
+          <p className="mt-1 text-sm text-gray-700">{job.company}</p>
           <div className="mt-3 flex flex-wrap gap-3 text-sm text-gray-600">
-            <span className="rounded bg-gray-100 px-2 py-1">📍 Bangalore</span>
-            <span className="rounded bg-gray-100 px-2 py-1">💰 6–10 LPA</span>
+            <span className="rounded bg-gray-100 px-2 py-1">📍 {job.location}</span>
+            <span className="rounded bg-gray-100 px-2 py-1">💰 {job.salary_range}</span>
             <span className="rounded bg-gray-100 px-2 py-1">🕒 Full Time</span>
           </div>
           <div className="mt-4 flex justify-end">
             <button className="text-sm font-medium text-blue-700 hover:underline">View Details →</button>
           </div>
         </div>
-
+        ))}
       </div>
     </main>
 
