@@ -1,15 +1,24 @@
 import React, { useActionState } from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 
-async function applyJobAction(_, formData) {
+
+export default function ApplyJobPage() {
+
+    const [result, formAction, isPending] = useActionState(applyJobAction, null,
+      { withpending: true }); 
+
+    const {jobId} = useParams();
+    const userId = localStorage.getItem('userId');
+
+    async function applyJobAction(_, formData) {
     const res = await fetch('http://127.0.0.1:8000/apply', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          job: 4,
-          applicant: 2
+          job: jobId,
+          applicant: userId
         })
     });
     
@@ -19,11 +28,6 @@ async function applyJobAction(_, formData) {
     } 
     return {message: data.message, success: false}  
 }
-
-export default function ApplyJobPage() {
-
-    const [result, formAction, isPending] = useActionState(applyJobAction, null,
-      { withpending: true }); 
 
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 flex flex-col">
