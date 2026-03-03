@@ -1,4 +1,5 @@
 import React, { useActionState } from 'react'
+import { NavLink } from 'react-router-dom';
 
 async function LoginAction(_, formData) {
     const json = Object.fromEntries(formData);
@@ -97,9 +98,9 @@ export default function LoginPage() {
 
     <p className="text-sm text-center text-gray-600">
         New to JobPortal?
-        <a href="#" className="text-blue-700 font-medium hover:underline">
-            Register here
-        </a>
+        <NavLink to="/register" className="text-blue-700 font-medium hover:underline">
+             Register here
+        </NavLink>
     </p>
 </form>
 </section>
