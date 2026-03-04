@@ -21,26 +21,6 @@
 
 ---
 
-## 📑 Table of Contents
-
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Screenshots](#screenshots)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Backend Setup](#backend-setup-django)
-- [Frontend Setup](#frontend-setup-react)
-- [API Endpoints](#api-endpoints)
-- [Frontend Routing](#frontend-routing)
-- [Concepts Demonstrated](#concepts-demonstrated)
-- [Learning Outcomes](#learning-outcomes)
-- [Future Enhancements](#future-enhancements)
-- [Contributing](#contributing)
-- [License](#license)
-- [Author](#author)
-
----
-
 ## 🌐 Overview
 
 This project is a full-stack job portal application that allows users to register, browse job listings, and apply for positions — all from a clean, responsive interface. The backend is powered by Django REST Framework serving a well-structured REST API, while the React frontend provides a smooth single-page application experience.
