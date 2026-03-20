@@ -3,7 +3,7 @@ import './App.css'
 import RegisterPage from './RegisterPage'
 import LoginPage from './LoginPage'
 import JobListPage from './JobListPage'
-import ApplyJobPage from '../ApplyJobPage'
+import ApplyJobPage from './ApplyJobPage'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
