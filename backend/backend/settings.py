@@ -42,6 +42,7 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://localhost:3000',
+    'https://jobportal-royhamlin.vercel.app',
 ]
 # Remove CORS_ALLOW_ALL_ORIGINS — not safe for production
 
