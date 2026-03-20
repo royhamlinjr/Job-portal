@@ -1,6 +1,6 @@
 import React, { useActionState } from 'react'
 import { NavLink, useParams } from 'react-router-dom';
-import API_BASE_URL from './src/api';
+import API_BASE_URL from './api';
 
 export default function ApplyJobPage() {
 
