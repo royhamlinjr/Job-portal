@@ -1,6 +1,6 @@
 import React, { useActionState } from 'react'
 import { NavLink, useParams } from 'react-router-dom';
-
+import API_BASE_URL from '../src/api';
 
 export default function ApplyJobPage() {
 
@@ -11,7 +11,7 @@ export default function ApplyJobPage() {
     const userId = localStorage.getItem('userId');
 
     async function applyJobAction(_, formData) {
-    const res = await fetch('http://127.0.0.1:8000/apply', {
+    const res = await fetch(`${API_BASE_URL}/apply`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
