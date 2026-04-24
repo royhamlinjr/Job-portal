@@ -17,8 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from .views import apply_job, basic_login, hello_api, job_list, register_user
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Backend is running 🚀")
 
 urlpatterns = [
+    path('', home),
     path('admin/', admin.site.urls),
     path('hello/',hello_api),
     path('register',register_user),
